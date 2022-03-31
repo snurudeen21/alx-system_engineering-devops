@@ -1,2 +1,3 @@
 #!/bin/bash
-id -Gn ./2-groups
+groups
+
