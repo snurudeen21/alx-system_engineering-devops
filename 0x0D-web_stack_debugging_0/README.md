@@ -1,0 +1,1 @@
+Debuggng full stack
