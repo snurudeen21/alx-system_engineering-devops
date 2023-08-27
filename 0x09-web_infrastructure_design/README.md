@@ -1,1 +1,0 @@
-WEb Stack and architecture
