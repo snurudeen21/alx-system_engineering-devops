@@ -1,1 +1,56 @@
 https://imgur.com/PqWeIVI
+
+1.	A user types www.foobar.com in their web browser.
+
+
+Components:
+1.	Load Balancer (HAproxy):
+•	Purpose: Distribute incoming web traffic, ensuring high availability and load balancing.
+
+
+2.	Web Servers (Nginx x3):
+•	Purpose: Serve as the first point of contact for incoming HTTP requests. Handle static content, forward dynamic requests to the application servers.
+
+3.	Application Servers (x3):
+•	Purpose: Execute the web application code, process dynamic content requests, and generate responses.
+
+4.	Database (MySQL Primary-Replica Cluster x2):
+•	Purpose: Primary-Replica clusters provide data redundancy, improve read performance, and enhance availability.
+
+5.	Firewalls (x3):
+•	Purpose: Firewalls are added to enhance security by controlling incoming and outgoing traffic, preventing unauthorized access, and protecting against threats.
+
+6.	SSL Certificate:
+•	Purpose: To enable HTTPS, ensuring encrypted communication between users and the website, enhancing security and user trust.
+
+7.	Monitoring Clients (Data Collectors for Sumo Logic):
+•	Purpose: Implement monitoring for performance, security, and availability. 
+Sumo Logic collects and analyzes data to provide insights into system health and performance.
+
+
+Specifics:
+•	Firewalls: Added to control and filter incoming and outgoing network traffic, protecting the infrastructure from unauthorized access and malicious activity.
+•	HTTPS: Traffic is served over HTTPS to encrypt data transmission between users and the website, 
+preventing eavesdropping, data interception, and ensuring data integrity.
+•	Monitoring: Used to:
+•	Performance Monitoring: Observe server QPS (Queries Per Second), resource utilization, and application performance.
+•	Security Monitoring: Detect and respond to security threats and vulnerabilities.
+•	Availability Monitoring: Ensure that the infrastructure is up and serving requests.
+•	Monitoring Data Collection: Monitoring tools like Sumo Logic collect data by installing agents or using 
+APIs to gather performance metrics, logs, and other relevant data from servers, applications, and network devices.
+•	Server QPS Monitoring: To monitor web server QPS, you would configure monitoring tools to collect and analyze 
+metrics related to incoming requests and server load. Alerts can be set up to trigger notifications if QPS thresholds are exceeded.
+
+
+Issues with This Infrastructure:
+1.	Terminating SSL at the Load Balancer Level:
+•	Terminating SSL at the load balancer can be an issue because it means that the traffic between the load balancer and the web servers is unencrypted. 
+It's recommended to use end-to-end encryption for maximum security.
+
+2.	Single MySQL Server Capable of Accepting Writes:
+•	This is a potential single point of failure for write operations. If the primary database server fails, it could lead to data loss and downtime. 
+Consider using a database clustering solution for high availability.
+
+3.	Servers with All the Same Components:
+•	While uniformity can simplify management, it can be problematic because if there's a vulnerability or issue with a particular component (e.g., a software version),
+it affects all servers. It's wise to have some diversity to minimize the impact of such issues.
