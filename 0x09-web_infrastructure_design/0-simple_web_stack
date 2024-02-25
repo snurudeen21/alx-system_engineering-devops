@@ -1,0 +1,42 @@
+https://imgur.com/VvTNgWI
+
+A user types www.foobar.com in their web browser.
+
+Components:
+Server: This is a physical or virtual machine responsible for handling incoming requests and serving responses.
+
+Domain Name: It acts as a human-readable alias for the server's IP address (8.8.8.8). Users access websites using domain names rather than IP addresses.
+
+DNS Record: The "www" in www.foobar.com is a subdomain and typically represented as a CNAME (Canonical Name) DNS record pointing to the main domain.
+
+Web Server (Nginx): It receives incoming HTTP requests, handles static content, and forwards dynamic requests to the application server.
+
+Application Server: Runs your web application code. It processes dynamic content requests and interacts with the database.
+
+Application Files: Your codebase is hosted on the server, including HTML templates, JavaScript, CSS, and server-side scripts.
+
+Database (MySQL): It stores and manages the website's data, such as user accounts, posts, or products.
+
+Communication: HTTP/HTTPS is used to communicate between the user's computer and the server.
+
+
+Roles:
+Server: Acts as the host for all components.
+
+Domain Name: Provides a user-friendly way to access the server.
+
+DNS Record (www): Specifies the subdomain for the website.
+
+Web Server (Nginx): Serves static content and forwards dynamic requests.
+
+Application Server: Executes web application code.
+
+Database: Stores and manages data.
+
+
+Issues:
+Single Point of Failure (SPOF): The entire infrastructure relies on one server. If it fails, the website goes down.
+
+Downtime during Maintenance: Any code updates or server maintenance would cause downtime.
+
+Scalability: Difficult to scale to handle increased traffic.

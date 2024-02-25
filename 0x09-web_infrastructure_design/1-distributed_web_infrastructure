@@ -1,0 +1,43 @@
+https://imgur.com/RJe0cN3
+
+A user types www.foobar.com in their web browser.
+
+
+1. Components:
+Load Balancer (HAproxy):
+Purpose: The load balancer is added to distribute incoming web traffic across multiple web servers for load balancing, high availability, and redundancy.
+Distribution Algorithm: We'll use a round-robin algorithm, which evenly distributes requests among the available web servers.
+Active-Active vs. Active-Passive: We will configure an Active-Active setup, where all web servers actively handle incoming requests simultaneously. 
+                                  This ensures efficient use of resources and high availability.
+
+Web Servers (Nginx x2):
+Purpose: The web servers (Nginx) serve as the first point of contact for incoming HTTP requests. 
+         They handle static content and forward dynamic requests to the application servers.
+
+Application Servers (x2):
+Purpose: Application servers execute the web application code, process dynamic content requests, and generate responses.
+
+Application Files:
+Purpose: The codebase for the web application is stored on both application servers. This redundancy ensures high availability of the application code.
+
+Database (MySQL Primary-Replica Cluster):
+Purpose: The database is designed as a Primary-Replica cluster to provide data redundancy, improve read performance, and enhance availability.
+
+Database Primary-Replica Cluster:
+In this setup, the Primary Node is the main database server responsible for handling write operations (e.g., INSERT, UPDATE, DELETE). 
+It ensures data consistency by processing write requests and replicating data changes to the Replica Nodes.
+Replica Nodes are secondary database servers. They serve as read replicas, handling read operations (e.g., SELECT queries). 
+They replicate data from the Primary Node to provide improved read scalability and high availability.
+
+
+2. Issues with This Infrastructure:
+Single Points of Failure (SPOF):
+The load balancer could be a single point of failure if not configured redundantly.
+The database Primary Node is also a potential SPOF. If it fails, write operations are affected until it's restored.
+
+Security Issues:
+There is no mention of a firewall, which can protect the infrastructure from unauthorized access.
+HTTPS is not mentioned, leaving the communication between users and the website unencrypted.
+
+No Monitoring:
+The infrastructure lacks monitoring for performance and security. Monitoring is crucial to detect and respond to issues proactively.
