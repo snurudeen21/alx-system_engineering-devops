@@ -3,7 +3,5 @@
 apt-get update
 apt-get install -y nginx
 sed -i 's/^.*listen.*$/    listen 80;/' /etc/nginx/sites-available/default
-service nginx restart
-echo "<html><body><h1>Hello World!</h1></body></html>" > /var/www/html/index.html
-sed -i '/^.*index.*$/a \\troot /var/www/html;' /etc/nginx/sites-available/default
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 service nginx restart
