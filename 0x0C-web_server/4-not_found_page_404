@@ -8,7 +8,7 @@ sudo apt-get install nginx -y
 
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 
-sudo sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://twitter.com/Toeseen188 permanent;" /etc/nginx/sites-enabled/default
+sudo sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://twitter.com/home permanent;" /etc/nginx/sites-enabled/default
 
 echo "Ceci n'est pas une page\n" | sudo tee /usr/share/nginx/html/page_error_404.html
 
