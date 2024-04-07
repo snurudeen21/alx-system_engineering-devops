@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
 # write a bash script that redirect  to another page
 # the redirection must be '301 Moved Permanently'
-# Installs, configures, and starts the server
 
-sudo apt update
-sudo apt install -y nginx
-echo "server {
-    listen 80;
-    server_name localhost;
+sudo apt-get update -y
+sudo apt-get install nginx -y
 
-    location /redirect_me {
-        return 301 https://twitter.com/snurudeen21 permanent;
-    }
-}" | sudo tee /etc/nginx/sites-available/redirect.conf > /dev/null
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 
-sudo ln -s /etc/nginx/sites-available/redirect.conf /etc/nginx/sites-enabled/
+sudo sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://twitter.com/snurudeen21 permanent;" /etc/nginx/sites-enabled/default
 
-sudo service nginx start
+sudo service nginx restart
