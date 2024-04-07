@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # a script that install nginx and configure it for ubuntu
 
-sudo apt-get update
-sudo apt-get install -y nginx
+apt-get update
+apt-get install -y nginx
 ufw allow 'Nginx HTTP'
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-sudo service nginx start
+service nginx start
