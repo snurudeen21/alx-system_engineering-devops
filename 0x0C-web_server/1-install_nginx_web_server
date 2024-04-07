@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # a script that install nginx and configure it for ubuntu
-apt-get update
-apt-get install -y nginx
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-service nginx restart
+sudo apt-get update
+sudo apt-get install -y nginx
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+systemctl restart nginx
