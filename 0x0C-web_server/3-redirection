@@ -16,5 +16,4 @@ echo "server {
 
 sudo ln -s /etc/nginx/sites-available/redirect.conf /etc/nginx/sites-enabled/
 
-
 sudo service nginx start
