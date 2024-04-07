@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # write a bash script that redirect  to another page
 # the redirection must be '301 Moved Permanently'
-
-#!/usr/bin/env bash
 # Installs, configures, and starts the server
 sudo apt-get update
 sudo apt-get -y install nginx
