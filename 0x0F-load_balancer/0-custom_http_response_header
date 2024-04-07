@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Script to configure and install a web-server
+# and attach an header
+
+sudo apt-get update -y
+sudo apt-get install nginx -y
+
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+sudo sed -i "/http {/a \ \tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+
+sudo service nginx restart
