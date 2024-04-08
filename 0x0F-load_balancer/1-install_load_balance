@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy on your lb-01 server.
-# Admin Redundancy 1238-web-01 and 1238-web-02
+# Admin Redundancy web-01 and web-02
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository -y ppa:vbernat/haproxy-1.8
 
@@ -10,6 +10,6 @@ sudo apt-get install -y haproxy
 sudo chmod 764 /etc/haproxy/
 sudo chmod 764 /etc/haproxy/haproxy.cfg
 
-sudo sed -i "$ a frontend Local_Server \n\t bind *:80 \n\t mode http \n\t default_backend My_Web_Servers \n\nbackend My_Web_Servers \n\t mode http \n\t balance roundrobin \n\t server web-01 52.204.211.141:80 check \n\t server web-02 100.25.48.240:80 check \n" /etc/haproxy/haproxy.cfg
+sudo sed -i "$ a frontend Local_Server \n\t bind *:80 \n\t mode http \n\t default_backend My_Web_Servers \n\nbackend My_Web_Servers \n\t mode http \n\t balance roundrobin \n\t server web-01 54.237.73.218:80 check \n\t server web-02 52.90.15.101:80 check \n" /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
