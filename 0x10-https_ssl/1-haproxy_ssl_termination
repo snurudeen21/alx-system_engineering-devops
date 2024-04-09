@@ -33,8 +33,8 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 frontend Local_Server 
-         bind *:80 
-         mode http 
+         bind *:443
+         mode https 
          default_backend My_Web_Servers 
 
 backend My_Web_Servers 
